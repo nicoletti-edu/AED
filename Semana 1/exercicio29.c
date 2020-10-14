@@ -1,17 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+//Tamanho Maximo do Nome
 const length = 30;
 
 int main(int argc, char const *argv[])
 {
-    char *names = malloc(length) + 1;
-    menu(&names);
+    char *names = malloc(length);
+    for(int i=0;i<length;i++){
+        names[i] = '\0';
+    }
+    //Quantidade de nomes na lista
+    int qnt = 0;
+    while (menu(names, &qnt) == 1);
     free(names);
     return 0;
 }
 
-void menu(char *names)
+int menu(char *names, int *qnt)
 {
+    system("cls");
     printf("1) Adicionar nome\n");
     printf("2) Remover nome\n");
     printf("3) Listar\n");
@@ -20,36 +29,109 @@ void menu(char *names)
     switch (getch())
     {
     case '1':
-        printf("1");
+        addName(names, qnt);
         break;
     case '2':
-        printf("2");
+        removeName(names, qnt);
         break;
     case '3':
-        list(names);
+        list(names, qnt);
         break;
     case '4':
-        return;
+        return 0;
         break;
     default:
         printf("Valor Invalido");
         break;
     }
+    return 1;
+}
+
+void addName(char *names, int *qnt)
+{
+    char name[30];
+    do
+    {
+        printf("Insira um nome: ");
+        scanf("%s", &name);
+        //Deixar espaço pro \0
+        if (strlen(name) > 29)
+        {
+            printf("Nome excede limite de caracteres");
+        }
+    } while (strlen(name) > 30);
+    char *position;
+    for (int i = 0; i <= (*qnt); i++)
+    {
+        if(*(names + (length * i)) == '\0'){
+            position = names + (length * i);
+            break;
+        }
+    }
+    
+    //Faz um calculo pra saber onde guardar o novo nome.
+    strcpy(position, name);
+    *qnt += 1;
+    names = realloc(names, length * (*qnt + 1));
+    //Adiciona um \0 no inicio da proxima string como indicador de espaço vazio
+    *(names + length * (*qnt)) = '\0';
+    system("cls");
     return;
 }
 
-void add_name(char *names){
-    printf("Insira um nome: ");
-    char name[30];
-    scanf("%s", &name);
-    names = realloc(names, length);
+void list(char *names, int *qnt)
+{
+    for (int i = 0; i < *qnt; i++)
+    {
+        //Procura o inicio do ultimo espaço alocado
+        if(*(names + length * i) != '\0')
+        {
+            printf("%i - ", i);
+            for (int j = 0; j < length; j++)
+            {
+                if (*(names + length * i + j) != '\0')
+                {
+                    printf("%c", *(names + length * i + j));
+                }
+                else
+                {
+                    break;
+                }
+            }
+            printf("\n");
+        }
+    }
+    getch();
+    system("cls");
+    return;
 }
 
-void list(char *names)
+void removeName(char *names, int *qnt)
 {
-    for (int i = 0; i < strlen(names); i++)
+    printf("Insira o numero do nome a ser removido: ");
+    int i;
+    scanf("%i", &i);
+    if (i <= *qnt)
     {
-        printf("%c", names[i]);
+        for (int j = 0; j < length; j++)
+        {
+            if (*(names + length * i + j) != '\0')
+            {
+                printf("%c", *(names + length * i + j));
+                printf(" ");
+                *(names + length * i + j) = '\0';
+            }
+            else
+            {
+                break;
+            }
+        }
+        printf("Removido!");
+        getch();
+    }else{
+        printf("Numero Inválido!");
+        getch();
     }
+    system("cls");
     return;
 }
