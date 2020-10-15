@@ -114,6 +114,7 @@ void list(char *names, int *qnt)
             printf("\n");
         }
     }
+    printf("Fim da busca!");
     getch();
     system("cls");
     return;
@@ -140,6 +141,12 @@ void removeName(char *names, int *qnt)
             {
                 break;
             }
+        }
+        if(i == 0 && *qnt == 0){
+            printf("Numero Inválido!");
+            getch();
+            system("cls");
+            return;
         }
         *qnt = *qnt - 1;
         memmove(names + length * i, names + length * (i+1),length * (*qnt - i));
