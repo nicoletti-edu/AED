@@ -41,11 +41,26 @@ int menu(char *names, int *qnt)
         return 0;
         break;
     default:
-        printf("Valor Invalido");
+        printf("Valor Invalido\nPressione Enter para continuar!");
+        getch();
         break;
     }
     return 1;
 }
+
+//Retorna o endereço da memória vazia mais próximo
+char * findEmpty(char *names, int *qnt){
+    char *position;
+    for (int i = 0; i <= (*qnt); i++)
+    {
+        if(*(names + (length * i)) == '\0'){
+            position = names + (length * i);
+            return position;
+        }
+    }
+    return 0;
+}
+
 
 void addName(char *names, int *qnt)
 {
@@ -53,21 +68,18 @@ void addName(char *names, int *qnt)
     do
     {
         printf("Insira um nome: ");
-        scanf("%s", &name);
+        // scanf("%s", &name);
+        fflush(stdin);
+        fgets(name,32,stdin);
+        int len = strlen(name);
+        name[len-1] = '\0';
         //Deixar espaço pro \0
         if (strlen(name) > 29)
         {
-            printf("Nome excede limite de caracteres");
+            printf("Nome excede limite de caracteres\n");
         }
-    } while (strlen(name) > 30);
-    char *position;
-    for (int i = 0; i <= (*qnt); i++)
-    {
-        if(*(names + (length * i)) == '\0'){
-            position = names + (length * i);
-            break;
-        }
-    }
+    } while (strlen(name) > 29);
+    char *position = findEmpty(names,qnt);
     
     //Faz um calculo pra saber onde guardar o novo nome.
     strcpy(position, name);
@@ -78,6 +90,7 @@ void addName(char *names, int *qnt)
     system("cls");
     return;
 }
+
 
 void list(char *names, int *qnt)
 {
@@ -111,8 +124,10 @@ void removeName(char *names, int *qnt)
     printf("Insira o numero do nome a ser removido: ");
     int i;
     scanf("%i", &i);
+    //Verifica se o indice é valido
     if (i <= *qnt)
     {
+        //Percorre o nome
         for (int j = 0; j < length; j++)
         {
             if (*(names + length * i + j) != '\0')
@@ -126,6 +141,11 @@ void removeName(char *names, int *qnt)
                 break;
             }
         }
+        *qnt = *qnt - 1;
+        memmove(names + length * i, names + length * (i+1),length * (*qnt - i));
+        names = realloc(names, length * (*qnt+1));
+        char  * lastname = (names + length * *qnt);
+        *lastname  = '\0';
         printf("Removido!");
         getch();
     }else{
