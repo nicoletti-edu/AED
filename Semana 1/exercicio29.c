@@ -7,7 +7,7 @@ const length = 30;
 
 int main(int argc, char const *argv[])
 {
-    char *names = malloc(length);
+    char *names = (char *) malloc(length);
     for(int i=0;i<length;i++){
         names[i] = '\0';
     }
@@ -84,7 +84,7 @@ void addName(char *names, int *qnt)
     //Faz um calculo pra saber onde guardar o novo nome.
     strcpy(position, name);
     *qnt += 1;
-    names = realloc(names, length * (*qnt + 1));
+    names = (char *) realloc(names, length * (*qnt + 1));
     //Adiciona um \0 no inicio da proxima string como indicador de espaço vazio
     *(names + length * (*qnt)) = '\0';
     system("cls");
@@ -150,7 +150,7 @@ void removeName(char *names, int *qnt)
         }
         *qnt = *qnt - 1;
         memmove(names + length * i, names + length * (i+1),length * (*qnt - i));
-        names = realloc(names, length * (*qnt+1));
+        names = (char *) realloc(names, length * (*qnt+1));
         char  * lastname = (names + length * *qnt);
         *lastname  = '\0';
         printf("Removido!");
