@@ -42,6 +42,11 @@ void addName(char *names, int *qnt)
     strcpy(position, name);
     *qnt += 1;
     names = (char *) realloc(names, length * (*qnt + 1));
+    if(!*names){
+        printf("Memória Insuficiente!");
+        free(names);
+        exit(1);
+    }
     //Adiciona um \0 no inicio da proxima string como indicador de espaço vazio
     *(names + length * (*qnt)) = '\0';
     system("cls");
@@ -105,10 +110,12 @@ void removeName(char *names, int *qnt)
             system("cls");
             return;
         }
+        //Puxa os numeros pra trás e diminui a *qnt
         *qnt = *qnt - 1;
         memmove(names + length * i, names + length * (i+1),length * (*qnt - i));
         names = (char *) realloc(names, length * (*qnt+1));
         char  * lastname = (names + length * *qnt);
+        //Adiciona o \0 como indicador de espaço vazio
         *lastname  = '\0';
         printf("Removido!\n");
         system("pause");
@@ -128,21 +135,25 @@ int menu(char *names, int *qnt)
     printf("3) Listar\n");
     printf("4) Sair \n");
 
-    switch (getch())
+    switch (getchar())
     {
     case '1':
+        fflush(stdin);
         addName(names, qnt);
         break;
     case '2':
+        fflush(stdin);
         removeName(names, qnt);
         break;
     case '3':
+        fflush(stdin);
         list(names, qnt);
         break;
     case '4':
         return 0;
         break;
     default:
+        fflush(stdin);
         printf("Valor Invalido\n");
         system("pause");
         break;
