@@ -42,7 +42,7 @@ void addName(char *names, int *qnt)
     strcpy(position, name);
     *qnt += 1;
     names = (char *) realloc(names, length * (*qnt + 1));
-    if(!*names){
+    if(!names){
         printf("Memória Insuficiente!");
         free(names);
         exit(1);

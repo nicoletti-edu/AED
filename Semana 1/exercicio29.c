@@ -3,7 +3,7 @@
 int main()
 {
     char *names = (char *) malloc(length);
-    if(!*names){
+    if(!names){
         printf("Memória insuficiente!");
         system("pause");
         return 1;
