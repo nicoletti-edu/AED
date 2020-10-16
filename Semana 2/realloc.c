@@ -38,20 +38,20 @@ int main ()
 }
 
 void* reallocNicoletti(void *p, size_t tam){
-    void *novo;
+    void *new;
 
     if(tam == 0){
         free(p);
         return NULL;
     }
 
-    novo = malloc(tam);
-    if(!novo){
+    new = malloc(tam);
+    if(!new){
         return NULL;
     }
     
     if(p != NULL){
-        memcpy(novo,p,tam);
+        memcpy(new,p,tam);
     }
-    return novo;
+    return new;
 }
