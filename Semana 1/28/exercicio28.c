@@ -32,7 +32,7 @@ int menu(pBuffer *p)
     {
     case '1':
         fflush(stdin);
-        // addName(p);
+        addName(p);
         break;
     case '2':
         fflush(stdin);
@@ -56,5 +56,5 @@ int menu(pBuffer *p)
 
 void addName(pBuffer *p){
     printf("Insira um nome: "); scanf("%s",&p->name);
-
+    return;
 }
