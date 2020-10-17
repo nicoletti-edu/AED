@@ -42,7 +42,7 @@ void addName(char *names, int *qnt)
     strcpy(position, name);
     *qnt += 1;
     names = (char *) realloc(names, length * (*qnt + 1));
-    if(!names){
+    if(names == NULL){
         printf("Memória Insuficiente!");
         free(names);
         exit(1);
@@ -123,6 +123,7 @@ void removeName(char *names, int *qnt)
         printf("Numero Inválido!");
         system("pause");
     }
+    fflush(stdin);
     system("cls");
     return;
 }

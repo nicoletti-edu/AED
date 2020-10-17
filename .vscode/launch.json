@@ -15,7 +15,7 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "D:\\Dev\\MinGW\\mingw64\\bin\\gdb.exe",
+            "miDebuggerPath": "D:\\Dev\\minGW\\bin\\gdb.exe",
             "setupCommands": [
                 {
                     "description": "Habilitar a reformatação automática para gdb",
