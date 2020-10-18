@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct
 {
@@ -9,6 +10,7 @@ typedef struct
 typedef struct
 {
     int i,qnt;
+    char name[40];
 }vars;
 
 void *pBuffer;
@@ -56,14 +58,23 @@ void list(vars *variaveis){
 
 void removeName(vars *variaveis){
 
-    pessoa *p;
-    printf("Insira o numero do nome a ser removido:"); scanf("%d", variaveis->i);
-    p = pBuffer + sizeof(vars) + (sizeof(pessoa) * variaveis->i);
-    //memcpy( Destino(Pessoa Selecionada), Fonte(Proxima pessoa), Tamanho(Quantidade de pessoas depois da removida) )
-    memcpy(p, p + sizeof(pessoa), sizeof(pessoa) * (variaveis->qnt - variaveis->i));
+    pessoa *p,*proxima;
+    // printf("Insira o numero do nome a ser removido:"); scanf("%d", &variaveis->i);
+    // fflush(stdin);
+    // p = pBuffer + sizeof(vars) + (sizeof(pessoa) * variaveis->i);
+    // if(variaveis->i != variaveis->qnt){
+    //     proxima = pBuffer + sizeof(vars) + (sizeof(pessoa) * variaveis->i+1);
+    //     for (; variaveis->i < variaveis->qnt-1; variaveis->i++)
+    //     {
+    //         *p = *proxima;
+    //         p++;
+    //         proxima++;
+    //     }
+    // }
     variaveis->qnt--;
     pBuffer = realloc(pBuffer, sizeof(vars) + (sizeof(pessoa) * variaveis->qnt) );
     printf("Removido!");
+    pause();
 
 }
 
@@ -74,13 +85,35 @@ void pause(){
     return;
 }
 
+void search(vars *variaveis){
+
+    pessoa *p;
+    p = pBuffer + sizeof(vars);
+    printf("Insira o nome a ser buscado: "); fgets(variaveis->name,40,stdin);
+    fflush(stdin);
+    variaveis = pBuffer;
+    for ( variaveis->i = 0; variaveis->i < variaveis->qnt; variaveis->i++)
+    {
+        if(strcmp(variaveis->name,p->name) == 0){
+            printf("%i - %s\n", variaveis->i, p->name);
+            pause();
+            return;
+        }
+        p++;
+    }
+    printf("Fim da busca!\n");
+    pause();
+    
+}
+
 int menu(vars *variaveis)
 {
     system("cls");
     printf("1) Adicionar nome\n");
     printf("2) Remover nome\n");
     printf("3) Listar\n");
-    printf("4) Sair \n");
+    printf("4) Buscar\n");
+    printf("5) Sair \n");
 
     switch (getchar())
     {
@@ -97,6 +130,10 @@ int menu(vars *variaveis)
         list(variaveis);
         break;
     case '4':
+        fflush(stdin);
+        search(variaveis);
+        break;
+    case '5':
         return 0;
         break;
     default:
