@@ -15,19 +15,11 @@ typedef struct
 
 void *pBuffer;
 
-int main(){
-
-    vars *variaveis;
-    pBuffer = malloc(sizeof(vars));
-    variaveis = pBuffer;
-    variaveis->qnt = 0;
-    if(pBuffer == NULL){
-        printf("Memoria insuficiente!");
-        return 1;
-    }
-    while(menu(variaveis) == 1);
-    free(pBuffer);
-    return 0;
+void pause(){
+    printf("Pressione enter para continuar!");
+    getchar();
+    fflush(stdin);
+    return;
 }
 
 void addName(vars *variaveis){
@@ -58,7 +50,7 @@ void list(vars *variaveis){
 
 void removeName(vars *variaveis){
 
-    pessoa *p,*proxima;
+    //pessoa *p, *pessoa;
     // printf("Insira o numero do nome a ser removido:"); scanf("%d", &variaveis->i);
     // fflush(stdin);
     // p = pBuffer + sizeof(vars) + (sizeof(pessoa) * variaveis->i);
@@ -78,12 +70,6 @@ void removeName(vars *variaveis){
 
 }
 
-void pause(){
-    printf("Pressione enter para continuar!");
-    getchar();
-    fflush(stdin);
-    return;
-}
 
 void search(vars *variaveis){
 
@@ -143,4 +129,19 @@ int menu(vars *variaveis)
         break;
     }
     return 1;
+}
+
+int main(){
+
+    vars *variaveis;
+    pBuffer = malloc(sizeof(vars));
+    variaveis = pBuffer;
+    variaveis->qnt = 0;
+    if(pBuffer == NULL){
+        printf("Memoria insuficiente!");
+        return 1;
+    }
+    while(menu(variaveis) == 1);
+    free(pBuffer);
+    return 0;
 }
