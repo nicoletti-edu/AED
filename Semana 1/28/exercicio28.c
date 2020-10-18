@@ -26,6 +26,10 @@ void addName(vars *variaveis){
     pessoa *p;
     variaveis->qnt++;
     pBuffer = realloc(pBuffer,sizeof(vars) + (sizeof(pessoa) * variaveis->qnt));
+    if(pBuffer == NULL){
+        printf("Memória insuficiente!");
+        exit(1);
+    }
     variaveis = pBuffer;
     p = pBuffer + sizeof(vars) + (sizeof(pessoa) * (variaveis->qnt - 1));
     fflush(stdin);
@@ -65,6 +69,10 @@ void removeName(vars *variaveis){
     // }
     variaveis->qnt--;
     pBuffer = realloc(pBuffer, sizeof(vars) + (sizeof(pessoa) * variaveis->qnt) );
+    if(pBuffer == NULL){
+        printf("Memória insuficiente!");
+        exit(1);
+    }
     printf("Removido!");
     pause();
 
@@ -135,6 +143,10 @@ int main(){
 
     vars *variaveis;
     pBuffer = malloc(sizeof(vars));
+    if(pBuffer == NULL){
+        printf("Memória insuficiente!");
+        exit(1);
+    }
     variaveis = pBuffer;
     variaveis->qnt = 0;
     if(pBuffer == NULL){
