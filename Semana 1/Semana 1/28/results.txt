@@ -1,0 +1,142 @@
+Dr. Memory version 2.3.0 build 1 built on Feb  6 2020 06:09:03
+Windows version: WinVer=105;Rel=2004;Build=19041;Edition=Core
+Dr. Memory results for pid 6048: "exercicio28.exe"
+Application cmdline: ""C:\Users\JKGam\Downloads\Semana_1\Semana 1\28\exercicio28.exe""
+Recorded 118 suppression(s) from default C:\Program Files (x86)\Dr. Memory\bin\suppress-default.txt
+
+Error #1: UNINITIALIZED READ: reading register eax
+# 0 KERNELBASE.dll!FindNextFileW 
+# 1 KERNELBASE.dll!FindNextFileA 
+# 2 .text          
+# 3 __mingw_glob   
+# 4 _setargv       
+# 5 .text          
+# 6 ntdll.dll!__RtlUserThreadStart
+Note: @0:00:01.521 in thread 9408
+Note: instruction: cmp    %eax $0x00000018
+
+Error #2: UNINITIALIZED READ: reading register eax
+# 0 KERNELBASE.dll!FindNextFileW 
+# 1 KERNELBASE.dll!FindNextFileA 
+# 2 .text          
+# 3 __mingw_glob   
+# 4 _setargv       
+# 5 .text          
+# 6 ntdll.dll!__RtlUserThreadStart
+Note: @0:00:01.542 in thread 9408
+Note: instruction: data16 mov    %cx -> 0x00000234(%esi,%eax,2)
+
+Error #3: UNINITIALIZED READ: reading register eax
+# 0 KERNELBASE.dll!FindNextFileW 
+# 1 KERNELBASE.dll!FindNextFileA 
+# 2 .text          
+# 3 __mingw_glob   
+# 4 _setargv       
+# 5 .text          
+# 6 ntdll.dll!__RtlUserThreadStart
+Note: @0:00:01.580 in thread 9408
+Note: instruction: test   %eax %eax
+
+Error #4: UNADDRESSABLE ACCESS of freed memory: writing 0x011d0ec8-0x011d0ec9 1 byte(s)
+# 0 msvcrt.dll!fgets    +0x134    (0x76168994 <msvcrt.dll+0x78994>)
+# 1 search         
+# 2 menu           
+# 3 main           
+Note: @0:00:30.225 in thread 9408
+Note: next higher malloc: 0x011d1000-0x011d2000
+Note: prev lower malloc:  0x011d0e30-0x011d0e6e
+Note: 0x011d0ec8-0x011d0ec9 overlaps memory 0x011d0ec0-0x011d0ef0 that was freed here:
+Note: # 0 replace_realloc               [d:\drmemory_package\common\alloc_replace.c:2669]
+Note: # 1 __mingw_realloc
+Note: # 2 menu           
+Note: # 3 main           
+Note: instruction: mov    %cl -> (%eax)
+
+Error #5: UNADDRESSABLE ACCESS of freed memory: writing 0x011d0ecc-0x011d0ecd 1 byte(s)
+# 0 msvcrt.dll!fgets    +0x142    (0x761689a2 <msvcrt.dll+0x789a2>)
+# 1 search         
+# 2 menu           
+# 3 main           
+Note: @0:00:30.229 in thread 9408
+Note: next higher malloc: 0x011d1000-0x011d2000
+Note: prev lower malloc:  0x011d0e30-0x011d0e6e
+Note: 0x011d0ecc-0x011d0ecd overlaps memory 0x011d0ec0-0x011d0ef0 that was freed here:
+Note: # 0 replace_realloc               [d:\drmemory_package\common\alloc_replace.c:2669]
+Note: # 1 __mingw_realloc
+Note: # 2 menu           
+Note: # 3 main           
+Note: instruction: mov    %bl -> (%eax)
+
+Error #6: UNINITIALIZED READ: reading register ecx
+# 0 replace_strcmp               [d:\drmemory_package\drmemory\replace.c:494]
+# 1 search         
+# 2 menu           
+# 3 main           
+Note: @0:00:30.233 in thread 9408
+Note: instruction: test   %ecx %ecx
+
+Error #7: UNADDRESSABLE ACCESS of freed memory: reading 0x011d0ec4-0x011d0ec8 4 byte(s)
+# 0 removeName     
+# 1 menu           
+# 2 main           
+Note: @0:00:38.078 in thread 9408
+Note: next higher malloc: 0x011d1000-0x011d2000
+Note: prev lower malloc:  0x011d0e30-0x011d0e6e
+Note: 0x011d0ec4-0x011d0ec8 overlaps memory 0x011d0ec0-0x011d0ef0 that was freed here:
+Note: # 0 replace_realloc               [d:\drmemory_package\common\alloc_replace.c:2669]
+Note: # 1 __mingw_realloc
+Note: # 2 menu           
+Note: # 3 main           
+Note: instruction: mov    0x04(%eax) -> %eax
+
+Error #8: UNADDRESSABLE ACCESS of freed memory: writing 0x011d0ec4-0x011d0ec8 4 byte(s)
+# 0 removeName     
+# 1 menu           
+# 2 main           
+Note: @0:00:38.078 in thread 9408
+Note: next higher malloc: 0x011d1000-0x011d2000
+Note: prev lower malloc:  0x011d0e30-0x011d0e6e
+Note: 0x011d0ec4-0x011d0ec8 overlaps memory 0x011d0ec0-0x011d0ef0 that was freed here:
+Note: # 0 replace_realloc               [d:\drmemory_package\common\alloc_replace.c:2669]
+Note: # 1 __mingw_realloc
+Note: # 2 menu           
+Note: # 3 main           
+Note: instruction: mov    %edx -> 0x04(%eax)
+
+Error #9: UNADDRESSABLE ACCESS of freed memory: reading 0x011d0ec4-0x011d0ec8 4 byte(s)
+# 0 removeName     
+# 1 menu           
+# 2 main           
+Note: @0:00:38.082 in thread 9408
+Note: next higher malloc: 0x011d1000-0x011d2000
+Note: prev lower malloc:  0x011d0e30-0x011d0e6e
+Note: 0x011d0ec4-0x011d0ec8 overlaps memory 0x011d0ec0-0x011d0ef0 that was freed here:
+Note: # 0 replace_realloc               [d:\drmemory_package\common\alloc_replace.c:2669]
+Note: # 1 __mingw_realloc
+Note: # 2 menu           
+Note: # 3 main           
+Note: instruction: mov    0x04(%eax) -> %eax
+
+===========================================================================
+FINAL SUMMARY:
+
+DUPLICATE ERROR COUNTS:
+	Error #   4:      4
+
+SUPPRESSIONS USED:
+
+ERRORS FOUND:
+      5 unique,     8 total unaddressable access(es)
+      4 unique,     4 total uninitialized access(es)
+      0 unique,     0 total invalid heap argument(s)
+      0 unique,     0 total GDI usage error(s)
+      0 unique,     0 total handle leak(s)
+      0 unique,     0 total warning(s)
+      0 unique,     0 total,      0 byte(s) of leak(s)
+      0 unique,     0 total,      0 byte(s) of possible leak(s)
+ERRORS IGNORED:
+      1 potential error(s) (suspected false positives)
+         (details: C:\Users\JKGam\AppData\Roaming\Dr. Memory\DrMemory-exercicio28.exe.6048.000\potential_errors.txt)
+     18 unique,    18 total,   5784 byte(s) of still-reachable allocation(s)
+         (re-run with "-show_reachable" for details)
+Details: C:\Users\JKGam\AppData\Roaming\Dr. Memory\DrMemory-exercicio28.exe.6048.000\results.txt
