@@ -49,7 +49,7 @@ void addName(char *names, int *qnt)
     }
     //Adiciona um \0 no inicio da proxima string como indicador de espaço vazio
     *(names + length * (*qnt)) = '\0';
-    system("cls");
+    system("cls||clear");
     return;
 }
 
@@ -78,7 +78,7 @@ void list(char *names, int *qnt)
     }
     printf("Fim da busca!\n");
     system("pause");
-    system("cls");
+    system("cls||clear");
     return;
 }
 
@@ -107,7 +107,7 @@ void removeName(char *names, int *qnt)
         if(i == 0 && *qnt == 0){
             printf("Numero Inválido!");
             system("pause");
-            system("cls");
+            system("cls||clear");
             return;
         }
         //Puxa os numeros pra trás e diminui a *qnt
@@ -124,13 +124,13 @@ void removeName(char *names, int *qnt)
         system("pause");
     }
     fflush(stdin);
-    system("cls");
+    system("cls||clear");
     return;
 }
 
 int menu(char *names, int *qnt)
 {
-    system("cls");
+    system("cls||clear");
     printf("1) Adicionar nome\n");
     printf("2) Remover nome\n");
     printf("3) Listar\n");
