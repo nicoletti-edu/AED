@@ -6,7 +6,7 @@ void* reallocNicoletti(void *p, size_t tam);
 
 int main ()
 {
-    //CÓDIGO QUE TESTA O REALLOC RETIRADO DE: http://www.cplusplus.com/reference/cstdlib/realloc/
+    //CÓDIGO QUE USA O REALLOC RETIRADO DE: http://www.cplusplus.com/reference/cstdlib/realloc/
   int input,n;
   int count = 0;
   int* numbers = NULL;
