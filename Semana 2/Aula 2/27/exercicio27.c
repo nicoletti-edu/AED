@@ -46,7 +46,7 @@ void* reallocNicoletti(void *p, size_t tam){
     }
 
     new = malloc(tam);
-    if(!new){
+    if(new == NULL){
         return NULL;
     }
     
