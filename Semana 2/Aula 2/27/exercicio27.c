@@ -1,55 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-typedef struct
-{
-    char nome[30];
-    int idade;
-    int altura;
-} Pessoa;
+void* reallocNicoletti(void *p, size_t tam);
 
-int main()
+int main ()
 {
-    char continuar;
-    int qnt = 0;
-    Pessoa *p;
-    do
-    {
-        system("cls");
-        printf("Deseja inserir um novo nome?\n1 - Sim\n0 - Nao\n");
-        continuar = getchar();
-        fflush(stdin);
-        if (continuar == '1')
-        {
-            qnt++;
-            p = realloc(p, qnt * sizeof(Pessoa));
-            if (p == NULL)
-            {
-                printf("Memoria Insuficiente!\n");
-                system("pause");
-                return 1;
-            }
-            printf("Insira um nome: ");
-            scanf("%s", &*(p + qnt - 1)->nome);
-            printf("Insira uma idade: ");
-            scanf("%d", &(p + qnt - 1)->idade);
-            printf("Insira uma altura: ");
-            scanf("%d", &(p + qnt - 1)->altura);
-            printf("Inserido com sucesso!");
-        }
-    } while (continuar != '0');
-    system("cls");
-    int i = 0;
-    while (i < qnt)
-    {
-        printf("%i - %s\n", i, p->nome);
-        printf("Idade: %d\n", p->idade);
-        printf("Altura: %d\n", p->altura);
-        printf("\n");
-        i++;
-        p++;
+    //CÓDIGO QUE USA O REALLOC RETIRADO DE: http://www.cplusplus.com/reference/cstdlib/realloc/
+  int input,n;
+  int count = 0;
+  int* numbers = NULL;
+  int* more_numbers = NULL;
+
+  do {
+     printf ("Enter an integer value (0 to end): ");
+     scanf ("%d", &input);
+     count++;
+    //SUBSTITUIDO O REALLOC POR MINHA FUNÇÃO
+     more_numbers = (int*) reallocNicoletti (numbers, count * sizeof(int));
+
+     if (more_numbers!=NULL) {
+       numbers=more_numbers;
+       numbers[count-1]=input;
+     }
+     else {
+       free (numbers);
+       puts ("Error (re)allocating memory");
+       exit (1);
+     }
+  } while (input!=0);
+
+  printf ("Numbers entered: ");
+  for (n=0;n<count;n++) printf ("%d ",numbers[n]);
+  free (numbers);
+
+  return 0;
+}
+
+void* reallocNicoletti(void *p, size_t tam){
+    void *new;
+
+    if(tam == 0){
+        free(p);
+        return NULL;
     }
 
-    free(p);
-    return 0;
+    new = malloc(tam);
+    if(!new){
+        return NULL;
+    }
+    
+    if(p != NULL){
+        memcpy(new,p,tam);
+    }
+    return new;
 }
