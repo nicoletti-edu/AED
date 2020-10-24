@@ -40,6 +40,7 @@ int main()
     } while (continuar != '0');
     system("cls");
     int i = 0;
+    Pessoa *aux = p;
     while (i < qnt)
     {
         printf("%i - %s\n", i, p->nome);
@@ -50,6 +51,6 @@ int main()
         p++;
     }
 
-    free(p);
+    free(aux);
     return 0;
 }
