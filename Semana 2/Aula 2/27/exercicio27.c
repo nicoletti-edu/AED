@@ -3,38 +3,28 @@
 #include <string.h>
 
 void* reallocNicoletti(void *p, size_t tam);
+void printNumbers(int *v,int qnt);
 
 int main ()
 {
-    //CÓDIGO QUE USA O REALLOC RETIRADO DE: http://www.cplusplus.com/reference/cstdlib/realloc/
-  int input,n;
-  int count = 0;
-  int* numbers = NULL;
-  int* more_numbers = NULL;
-
-  do {
-     printf ("Enter an integer value (0 to end): ");
-     scanf ("%d", &input);
-     count++;
-    //SUBSTITUIDO O REALLOC POR MINHA FUNÇÃO
-     more_numbers = (int*) reallocNicoletti (numbers, count * sizeof(int));
-
-     if (more_numbers!=NULL) {
-       numbers=more_numbers;
-       numbers[count-1]=input;
-     }
-     else {
-       free (numbers);
-       puts ("Error (re)allocating memory");
-       exit (1);
-     }
-  } while (input!=0);
-
-  printf ("Numbers entered: ");
-  for (n=0;n<count;n++) printf ("%d ",numbers[n]);
-  free (numbers);
-
+  int qnt = 0;
+  qnt++;
+  int *numeros = malloc(sizeof(int) * qnt);
+  numeros[0] = 1;
+  printNumbers(numeros,qnt);
+  qnt++;
+  numeros = realloc(numeros, qnt * sizeof(int));
+  numeros[1] = 2;
+  printNumbers(numeros,qnt);
+  free(numeros);
   return 0;
+}
+
+void printNumbers(int *v,int qnt){
+  printf("\n");
+for(int i = 0;i<qnt;i++){
+    printf("%i", v[i]);
+  }
 }
 
 void* reallocNicoletti(void *p, size_t tam){
@@ -51,7 +41,7 @@ void* reallocNicoletti(void *p, size_t tam){
     }
     
     if(p != NULL){
-        memcpy(new,p,tam);
+        memcpy(new,p,tam - sizeof(int));
     }
     return new;
 }
