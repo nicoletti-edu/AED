@@ -159,6 +159,7 @@ void imprimirVetor(int *vetor, int n)
     {
         printf("%d ", vetor[i]);
     }
+    free(vetor);
     slp(5);
 }
 
