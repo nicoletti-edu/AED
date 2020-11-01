@@ -1,0 +1,11 @@
+1 - E
+2 - Os dois imprimem a mesma matriz, porém a segunda função percorre de endereço em endereço, enquanto o primeiro percorre por indices.
+3A - O endereço de i
+3B - A subtração dos endereços de i e j
+3C - O valor de i
+3D - 6
+4 - "(endereço de i), 7, 5, 15, 9"
+5 - A
+6 - B e C não são válidas pois não se pode incrementar um endereço, logo, A E D estão certas
+pois incrementam um valor
+10 - 
