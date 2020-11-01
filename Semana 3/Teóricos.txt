@@ -8,4 +8,7 @@
 5 - A
 6 - B e C não são válidas pois não se pode incrementar um endereço, logo, A E D estão certas
 pois incrementam um valor
-10 - 
+9 - E
+10A - É uma função que retorna o quadrado de um numero
+10B - 100
+10C - N consegui :P
