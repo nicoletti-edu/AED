@@ -17,8 +17,9 @@ int menu(vars *variaveis, fila *filaInfo)
     printf("1) Adicionar nome\n");
     printf("2) Remover nome\n");
     printf("3) Listar\n");
-    printf("4) Esvaziar\n");
-    printf("5) Sair \n");
+    printf("4) Listar Ordenado\n");
+    printf("5) Esvaziar\n");
+    printf("6) Sair \n");
     fflush(stdin);
     scanf("%d", &variaveis->i);
 
@@ -31,13 +32,16 @@ int menu(vars *variaveis, fila *filaInfo)
         pop(filaInfo);
         break;
     case 3:
-        list(variaveis, filaInfo);
+        list(filaInfo);
         break;
     case 4:
-        empty(filaInfo);
+        imprimirOrdenada(variaveis, filaInfo);
         break;
     case 5:
-        return 0;
+        empty(filaInfo);
+        break;
+    case 6:
+return 0;
         break;
     default:
         printf("Valor Invalido\n");
@@ -53,10 +57,9 @@ int main()
     vars *variaveis;
     fila *filaInfo;
 
-    pBuffer = malloc(sizeof(vars) + sizeof(fila));
+    pBuffer = malloc(sizeof(vars) + sizeof(fila) + sizeof(fila));
     variaveis = pBuffer;
     filaInfo = pBuffer + sizeof(vars);
-    variaveis->qnt = 0;
 
     if (pBuffer == NULL)
     {

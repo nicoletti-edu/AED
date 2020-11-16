@@ -1,14 +1,17 @@
 typedef struct
 {
     char nome[40];
+    int idade;
 } dados;
 
-typedef struct
+struct nodo
 {
     dados info;
-    struct tipoFila *next;
-    struct tipoFila *previous;
-} tipoFila;
+    struct nodo *next;
+    struct nodo *previous;
+};
+
+typedef struct nodo tipoFila;
 
 typedef struct
 {
@@ -19,8 +22,7 @@ typedef struct
 
 typedef struct
 {
-    int i, qnt;
-    char name[40];
+    int i;
 } vars;
 
 void *pBuffer;
@@ -39,4 +41,8 @@ void fill(tipoFila *node);
 
 void printData(tipoFila *node);
 
-void list(vars* variaveis, fila* filaInfo);
+void list(fila* filaInfo);
+
+void imprimirOrdenada(vars *variaveis, fila *filaInfo);
+
+void pushOrder(fila *filaInfo, tipoFila *nodo, vars *variaveis);
