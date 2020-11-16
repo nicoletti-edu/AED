@@ -131,6 +131,7 @@ void imprimirOrdenada(vars *variaveis, fila *filaInfo)
     reset(filaOrdenada);
     while (!empty(filaInfo))
     {
+        //Percorre a lista e passa ela de forma ordenada
         pushOrder(filaOrdenada, filaInfo->first, variaveis);
         pop(filaInfo);
     }
@@ -162,6 +163,7 @@ void pushOrder(fila *filaInfo, tipoFila *nodo, vars *variaveis)
     else
     {
         tipoFila *aux = filaInfo->last;
+        //verifica o tipo de ordenação e ordena conforme
         if (variaveis->i == 1)
         {
             while (aux->info.idade < node->info.idade)
@@ -198,7 +200,7 @@ void pushOrder(fila *filaInfo, tipoFila *nodo, vars *variaveis)
                 }
             }
         }
-
+        //Encaixa o node no lugar devido
         if (aux->next == NULL)
         {
             aux->next = node;
