@@ -1,0 +1,1 @@
+Não, pois o auto-balanceamento evitará esses casos.

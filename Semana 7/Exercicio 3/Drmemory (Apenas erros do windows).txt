@@ -1,6 +1,6 @@
 Dr. Memory version 2.3.0 build 1 built on Feb  6 2020 06:07:09
 Windows version: WinVer=105;Rel=2004;Build=19041;Edition=ProfessionalWorkstation
-Dr. Memory results for pid 12420: "exercicio3.exe"
+Dr. Memory results for pid 7564: "exercicio3.exe"
 Application cmdline: "exercicio3"
 Recorded 118 suppression(s) from default D:\DrMemory\bin64\suppress-default.txt
 
@@ -10,11 +10,11 @@ Error #1: UNADDRESSABLE ACCESS beyond top of stack: reading 0x000000000061fb40-0
 # 2 __tmainCRTStartup
 # 3 .l_start      
 # 4 KERNEL32.dll!BaseThreadInitThunk
-Note: @0:00:00.146 in thread 2108
+Note: @0:00:00.154 in thread 2808
 Note: 0x000000000061fb40 refers to 600 byte(s) beyond the top of the stack 0x000000000061fd98
 Note: instruction: or     $0x0000000000000000 (%rcx) -> (%rcx)
 
-Error #2: POSSIBLE LEAK 28 direct bytes 0x00000000016901c0-0x00000000016901dc + 0 indirect bytes
+Error #2: POSSIBLE LEAK 28 direct bytes 0x00000000015c01c0-0x00000000015c01dc + 0 indirect bytes
 # 0 replace_malloc                    [d:\drmemory_package\common\alloc_replace.c:2577]
 # 1 msvcrt.dll!malloc_crt
 # 2 msvcrt.dll!_setargv  
@@ -45,4 +45,4 @@ ERRORS FOUND:
 ERRORS IGNORED:
       4 unique,     4 total,   4139 byte(s) of still-reachable allocation(s)
          (re-run with "-show_reachable" for details)
-Details: D:\DrMemory\drmemory\logs\DrMemory-exercicio3.exe.12420.000\results.txt
+Details: D:\DrMemory\drmemory\logs\DrMemory-exercicio3.exe.7564.000\results.txt
